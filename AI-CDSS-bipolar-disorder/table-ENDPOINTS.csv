@@ -1,0 +1,5 @@
+﻿Endpoint,Function
+POST /api/predict/,Submit patient data for mood prediction
+GET /api/history/<patient_id>/,Retrieve patient’s prediction history
+POST /api/alert/,Trigger high-risk alerts to clinicians
+GET /api/shap/<prediction_id>/,Retrieve explanation for a prediction

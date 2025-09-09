@@ -1,0 +1,5 @@
+digraph {
+	A [label="Research Initiation"]
+	B [label="Study Completion"]
+	A -> B
+}

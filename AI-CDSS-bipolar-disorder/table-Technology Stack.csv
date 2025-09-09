@@ -1,0 +1,8 @@
+﻿Layer,Technology,Justification
+Frontend,"React.js, Bootstrap, HTML5, CSS3","Responsive, mobile-first design; works on low-end devices"
+Backend,"Python, Django REST Framework","Robust API development, strong security, and ML integration"
+Machine Learning,"Scikit-learn, XGBoost, LightGBM, SHAP",High-performance gradient boosting; interpretable AI
+Database,PostgreSQL (with pgcrypto),"Relational, secure, supports complex queries and encryption"
+Deployment,"Docker, Nginx, Ubuntu Server",Containerized for easy deployment on local servers or cloud
+Version Control,"Git, GitHub","Collaboration, backup, and CI/CD support"
+Hosting,"Local server (for pilot), AWS (for future scale)",Ensures data sovereignty and compliance with NDPR

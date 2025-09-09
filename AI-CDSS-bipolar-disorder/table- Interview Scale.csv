@@ -1,0 +1,16 @@
+﻿Feature,Description
+Mood,-3 (very low) to +3 (very high)
+Motivation,-3 (no motivation) to +3 (high drive)
+Attention/Concentration Problems,0–4 (none to severe)
+Irritability,0–4
+Anxiety,0–4
+Sleep Quality,0–4
+Menstrual Cycle,Binary (yes/no) for female patients
+Number of Cigarettes,Count since waking
+Caffeine Intake,Estimated amount
+Alcohol Use,Yes/No
+Other Drugs,Yes/No
+Wake-up Time,Time of day
+Going to Bed Time,Time of day
+Code,Patient identifier
+Date,Assessment date

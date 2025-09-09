@@ -1,0 +1,9 @@
+﻿Component,Function
+User Interface Module,Web-based input form and dashboard
+Authentication Module,"Login, session management, role-based access"
+Data Preprocessing Module,Cleans and normalizes input data
+ML Inference Engine,Runs XGBoost-LightGBM ensemble model
+Interpretability Module,Generates SHAP values for prediction transparency
+Alert & Notification Module,Sends risk alerts to clinicians
+Database Module,Secure storage and retrieval of patient records
+API Gateway,RESTful interface for external integration

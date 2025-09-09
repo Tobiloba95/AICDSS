@@ -1,0 +1,7 @@
+﻿Requirement ID,Description
+FR1,"The system shall accept input of clinical data including YMRS, HDRS, episode duration, and behavioral observations."
+FR2,"The system shall predict the likelihood of manic, depressive, or euthymic states using ML models."
+FR3,"The system shall provide interpretable outputs (e.g., risk score, feature importance)."
+FR4,The system shall store patient records securely with anonymization.
+FR5,The system shall generate alerts for high-risk episodes.
+FR6,"The system shall support multi-user access (clinician, admin, patient view)."

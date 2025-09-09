@@ -1,0 +1,65 @@
+digraph MixedMethodsBD_Research {
+	rankdir=TB size=10
+	start [label="Research Initiation" fillcolor=black fontcolor=white shape=circle style=filled]
+	fork [label="" fillcolor=black height=0.05 shape=rectangle style=filled width=1.5]
+	q1 [label="Recruit non-clinical participants (n=575) via convenience sampling
+Plateau, Ekiti, Oyo States" shape=rect style=rounded]
+	q2 [label="Administer sociodemographic questionnaire + OBKQ" shape=rect style=rounded]
+	q3 [label="Collect data in English" shape=rect style=rounded]
+	q4 [label="Clean and code data" shape=rect style=rounded]
+	q5 [label="Analyze with SPSS v25: Descriptives + One-way ANOVA
+Factors: age, gender, employment, marital status" shape=rect style=rounded]
+	qout [label="Quantitative Results:
+- Mean OBKQ scores
+- ANOVA p-values
+(No significant gender differences; Part-time workers 25–44 yrs highest knowledge)" shape=note]
+	ql1 [label="Recruit N=15 (5 BD patients, 7 clinicians, 3 caregivers)
+Purposive + Snowball sampling" shape=rect style=rounded]
+	ql2 [label="Conduct semi-structured interviews (~60 mins)
+in English" shape=rect style=rounded]
+	ql3 [label="Audio-record + Transcribe verbatim" shape=rect style=rounded]
+	ql4 [label="Thematic analysis (Critical realist + Socio-constructionist lens)" shape=rect style=rounded]
+	ql5 [label="Identify themes:
+1. Genetic/psychosocial causes
+2. Lived experiences
+3. Role of medication
+4. Cultural/religious barriers" shape=rect style=rounded]
+	qlout [label="Qualitative Results:
+Themes + Supporting Quotes
+(Religious beliefs as major treatment barrier)" shape=note]
+	join [label="" fillcolor=black height=0.05 shape=rectangle style=filled width=1.5]
+	int1 [label="Compare and contrast quantitative + qualitative results" shape=rect style=rounded]
+	int2 [label="Interpret using Social Zeitgeber Theory (Ehlers et al., 1988)" shape=rect style=rounded]
+	int3 [label="Highlight insights:
+- Low public awareness
+- Cultural barriers to treatment
+- Need for culturally adapted interventions" shape=rect style=rounded]
+	int4 [label="Discuss implications for policy + practice" shape=rect style=rounded]
+	out1 [label="Publication of results" shape=note]
+	out2 [label="Recommendations for culturally adapted psychosocial interventions" shape=note]
+	out3 [label="Call for future feasibility + acceptability studies" shape=note]
+	end [label="Study Completion" fillcolor=black fontcolor=white shape=doublecircle style=filled]
+	start -> fork
+	fork -> q1
+	q1 -> q2
+	q2 -> q3
+	q3 -> q4
+	q4 -> q5
+	q5 -> qout
+	qout -> join
+	fork -> ql1
+	ql1 -> ql2
+	ql2 -> ql3
+	ql3 -> ql4
+	ql4 -> ql5
+	ql5 -> qlout
+	qlout -> join
+	join -> int1
+	int1 -> int2
+	int2 -> int3
+	int3 -> int4
+	int4 -> out1
+	int4 -> out2
+	int4 -> out3
+	out3 -> end
+}

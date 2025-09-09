@@ -1,0 +1,7 @@
+﻿Requirement ID,Description
+NFR1,Performance: Model inference time ≤ 2 seconds on low-end devices.
+NFR2,Usability: Intuitive interface for non-technical users.
+NFR3,Scalability": Support up to 10,000 patient records."
+NFR4,Security: End-to-end encryption and role-based access control.
+NFR5,Portability: Deployable on local servers or cloud platforms.
+NFR6,Interoperability": Compatible with standard health data formats (e.g., HL7, FHIR)."
