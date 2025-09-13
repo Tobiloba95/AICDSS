@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstherBabs AI CDSS - Patient Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6d8bc7;
+            --success: #5cb85c;
+            --warning: #f0ad4e;
+            --danger: #d9534f;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --patient-primary: #6f42c1;
+            --patient-secondary: #8c68cd;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #495057;
+        }
+        
+        .patient-header {
+            background: linear-gradient(135deg, var(--patient-primary), var(--patient-secondary));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .patient-nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .patient-nav .nav-link {
+            color: #6c757d;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .patient-nav .nav-link:hover, .patient-nav .nav-link.active {
+            color: var(--patient-primary);
+            background-color: #f8f9fa;
+            border-bottom: 3px solid var(--patient-primary);
+        }
+        
+        .dashboard-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            background-color: white;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            padding: 15px 20px;
+            border-radius: 12px 12px 0 0 !important;
+        }
+        
+        .risk-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .risk-low {
+            background-color: var(--success);
+        }
+        
+        .risk-medium {
+            background-color: var(--warning);
+        }
+        
+        .risk-high {
+            background-color: var(--danger);
+        }
+        
+        .btn-patient {
+            background: linear-gradient(135deg, var(--patient-primary), var(--patient-secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+        }
+        
+        .btn-patient:hover {
+            background: linear-gradient(135deg, var(--patient-secondary), var(--patient-primary));
+            color: white;
+        }
+        
+        .mood-tracker {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .mood-item {
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .mood-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .mood-item.selected {
+            background-color: #e9ecef;
+            transform: scale(1.05);
+        }
+        
+        .mood-emoji {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .medication-reminder {
+            border-left: 4px solid var(--patient-primary);
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+        
+        .feature-importance-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e9ecef;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        
+        .feature-importance-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .message-box {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        
+        .message.received {
+            background-color: #e9ecef;
+            border-top-left-radius: 4px;
+            align-self: flex-start;
+        }
+        
+        .message.sent {
+            background-color: var(--patient-primary);
+            color: white;
+            border-top-right-radius: 4px;
+            align-self: flex-end;
+        }
+        
+        @media (max-width: 768px) {
+            .mood-tracker {
+                flex-wrap: wrap;
+            }
+            
+            .mood-item {
+                flex: 0 0 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Patient Header -->
+    <header class="patient-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <img src="https://ui-avatars.com/api/?name=Chinedu+Okafor&background=ffffff&color=6f42c1" class="rounded-circle me-3" width="60" height="60">
+                    <div>
+                        <h3 class="mb-0">Chinedu Okafor</h3>
+                        <p class="mb-0">Welcome to your wellness dashboard</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-light">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="patient-nav">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-home me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-heart me-1"></i> Wellness
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-comments me-1"></i> Messages
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-chart-line me-1"></i> Progress
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-capsules me-1"></i> Medications
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-lg-8">
+                <!-- Risk Status Card -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Your Current Status</span>
+                        <div class="badge bg-danger">High Mania Risk</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Notice:</strong> Our AI system has detected a high risk of mania. Please review the recommendations and contact your doctor if needed.
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Mania Risk</h6>
+                                <div class="progress mb-3" style="height: 20px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 82%;" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">82%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Depression Risk</h6>
+                                <div class="progress mb-3" style="height: 20px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h6>Key Factors</h6>
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span>Sleep Reduction</span>
+                                <span>34% contribution</span>
+                            </div>
+                            <div class="feature-importance-bar">
+                                <div class="feature-importance-fill bg-danger" style="width: 34%;"></div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span>Elevated Irritability</span>
+                                <span>28% contribution</span>
+                            </div>
+                            <div class="feature-importance-bar">
+                                <div class="feature-importance-fill bg-danger" style="width: 28%;"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Increased Activity</span>
+                                <span>22% contribution</span>
+                            </div>
+                            <div class="feature-importance-bar">
+                                <div class="feature-importance-fill bg-danger" style="width: 22%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mood Tracking -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header">
+                        How are you feeling today?
+                    </div>
+                    <div class="card-body">
+                        <div class="mood-tracker">
+                            <div class="mood-item selected">
+                                <div class="mood-emoji">😔</div>
+                                <div>Depressed</div>
+                            </div>
+                            <div class="mood-item">
+                                <div class="mood-emoji">😊</div>
+                                <div>Balanced</div>
+                            </div>
+                            <div class="mood-item">
+                                <div class="mood-emoji">😄</div>
+                                <div>Elevated</div>
+                            </div>
+                            <div class="mood-item">
+                                <div class="mood-emoji">😡</div>
+                                <div>Irritable</div>
+                            </div>
+                            <div class="mood-item">
+                                <div class="mood-emoji">😰</div>
+                                <div>Anxious</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="sleepHours" class="form-label">Sleep Hours Last Night</label>
+                            <input type="range" class="form-range" min="0" max="12" step="0.5" id="sleepHours">
+                            <div class="d-flex justify-content-between">
+                                <small>0 hours</small>
+                                <small id="sleepHoursValue">6 hours</small>
+                                <small>12 hours</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="energyLevel" class="form-label">Energy Level</label>
+                            <input type="range" class="form-range" min="0" max="10" id="energyLevel">
+                            <div class="d-flex justify-content-between">
+                                <small>No energy</small>
+                                <small id="energyLevelValue">5</small>
+                                <small>High energy</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="notes" rows="2" placeholder="Share any additional thoughts or feelings..."></textarea>
+                        </div>
+                        
+                        <button class="btn btn-patient w-100">
+                            <i class="fas fa-save me-2"></i> Save Today's Assessment
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Progress Chart -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header">
+                        Your Mood Trends
+                    </div>
+                    <div class="card-body">
+                        <canvas id="moodChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="col-lg-4">
+                <!-- Medications -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Medication Schedule</span>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="medication-reminder">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Lithium Carbonate</h6>
+                                    <small class="text-muted">300mg · Twice daily</small>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="med1" checked>
+                                    <label class="form-check-label" for="med1"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="medication-reminder">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Quetiapine</h6>
+                                    <small class="text-muted">50mg · At bedtime</small>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="med2">
+                                    <label class="form-check-label" for="med2"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted">Last updated: Today at 9:30 AM</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommendations -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header">
+                        Personalized Recommendations
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Based on your current status, we recommend:
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6><i class="fas fa-moon text-primary me-2"></i> Sleep Hygiene</h6>
+                            <p class="small">Aim for 7-8 hours of sleep. Maintain a consistent sleep schedule even on weekends.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6><i class="fas fa-walking text-primary me-2"></i> Physical Activity</h6>
+                            <p class="small">30 minutes of moderate exercise daily can help stabilize mood.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6><i class="fas fa-apple-alt text-primary me-2"></i> Nutrition</h6>
+                            <p class="small">Eat balanced meals at regular intervals. Limit caffeine and sugar.</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6><i class="fas fa-hand-holding-heart text-primary me-2"></i> Stress Management</h6>
+                            <p class="small">Practice mindfulness for 10 minutes daily. Consider using our guided meditation resources.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Messages -->
+                <div class="dashboard-card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Recent Messages</span>
+                        <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                    </div>
+                    <div class="card-body message-box d-flex flex-column">
+                        <div class="message received">
+                            <strong>Dr. Adebayo</strong>
+                            <p class="mb-0">Hello Chinedu, I've reviewed your recent assessment. Let's schedule a quick call to discuss adjusting your medication.</p>
+                            <small class="text-muted">Yesterday, 2:30 PM</small>
+                        </div>
+                        
+                        <div class="message sent">
+                            <p class="mb-0">Okay doctor, I'm available tomorrow after 3 PM. Should I continue with my current dose until then?</p>
+                            <small class="text-muted">Yesterday, 3:15 PM</small>
+                        </div>
+                        
+                        <div class="message received">
+                            <strong>Dr. Adebayo</strong>
+                            <p class="mb-0">Yes, continue as prescribed. We'll talk tomorrow. Remember to practice the breathing exercises we discussed.</p>
+                            <small class="text-muted">Today, 9:15 AM</small>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Type your message...">
+                            <button class="btn btn-patient" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency Contact -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        Emergency Contacts
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user-md text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Dr. Adebayo</h6>
+                                <small class="text-muted">Psychiatrist</small>
+                            </div>
+                            <a href="tel:+2348012345678" class="btn btn-sm btn-outline-danger ms-auto">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-hands-helping text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Mental Health Support</h6>
+                                <small class="text-muted">24/7 Hotline</small>
+                            </div>
+                            <a href="tel:+2348001234567" class="btn btn-sm btn-outline-danger ms-auto">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="alert alert-warning mt-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            If you're in crisis, contact emergency services immediately.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>EstherBabs AI CDSS</h5>
+                    <p class="mb-0 text-muted">Your partner in managing bipolar disorder</p>
+                </div>
+                <div>
+                    <small class="text-muted">© 2025 EsherBabs AI. All rights reserved.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize charts and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mood chart
+            const ctx = document.getElementById('moodChart').getContext('2d');
+            const moodChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'Mania Indicators',
+                            data: [45, 52, 60, 65, 70, 75, 82],
+                            borderColor: '#d9534f',
+                            backgroundColor: 'rgba(217, 83, 79, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Depression Indicators',
+                            data: [30, 25, 20, 25, 20, 18, 15],
+                            borderColor: '#5cb85c',
+                            backgroundColor: 'rgba(92, 184, 92, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Weekly Mood Trends'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Symptom Severity'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Mood selection
+            const moodItems = document.querySelectorAll('.mood-item');
+            moodItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    moodItems.forEach(m => m.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Sleep hours slider
+            const sleepSlider = document.getElementById('sleepHours');
+            const sleepValue = document.getElementById('sleepHoursValue');
+            sleepSlider.addEventListener('input', function() {
+                sleepValue.textContent = `${this.value} hours`;
+            });
+            
+            // Energy level slider
+            const energySlider = document.getElementById('energyLevel');
+            const energyValue = document.getElementById('energyLevelValue');
+            energySlider.addEventListener('input', function() {
+                energyValue.textContent = this.value;
+            });
+        });
+    </script>
+</body>
+</html>

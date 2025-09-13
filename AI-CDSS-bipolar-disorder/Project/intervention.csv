@@ -1,0 +1,220 @@
+code,professional,intervention_type,atended,date,GAF,Relief_obtained_compared_to_previous_appointment
+A,Psychiatrist,Medical Appointment,Yes,2023-01-02,40,6
+A,Therapist,Video,Yes,2023-01-05,35,7
+A,Psychiatrist,Medical Appointment,Yes,2023-01-10,45,6
+A,Psychiatrist,Medical Appointment,Yes,2023-02-02,60,3
+A,Nurse,Hospital Intervention,No,2023-02-07,55,4
+B,Psychiatrist,Medical Appointment,Yes,2023-01-04,35,7
+B,Therapist,Phone Call,Yes,2023-01-08,40,6
+B,Psychiatrist,Medical Appointment,Yes,2023-02-16,65,3
+B,Therapist,Video,Yes,2023-02-20,60,4
+B,Nurse,Medical Appointment,Yes,2023-03-12,45,6
+C,Psychiatrist,Medical Appointment,Yes,2023-01-06,40,6
+C,Therapist,Phone Call,No,2023-01-12,35,7
+C,Psychiatrist,Medical Appointment,Yes,2023-02-11,60,3
+C,Nurse,Hospital Intervention,Yes,2023-02-15,55,4
+C,Therapist,Video,Yes,2023-03-16,45,6
+A,Psychiatrist,Medical Appointment,Yes,2023-03-06,35,7
+A,Therapist,Phone Call,Yes,2023-03-10,40,6
+A,Psychiatrist,Medical Appointment,Yes,2023-04-02,65,3
+A,Nurse,Video,Yes,2023-04-06,60,4
+A,Psychiatrist,Medical Appointment,Yes,2023-05-11,45,6
+B,Therapist,Medical Appointment,Yes,2023-03-11,35,7
+B,Psychiatrist,Phone Call,Yes,2023-03-15,40,6
+B,Psychiatrist,Medical Appointment,Yes,2023-04-06,60,3
+B,Nurse,Hospital Intervention,Yes,2023-04-10,55,4
+B,Therapist,Video,Yes,2023-05-02,45,6
+C,Psychiatrist,Medical Appointment,Yes,2023-03-17,35,7
+C,Therapist,Phone Call,Yes,2023-03-21,40,6
+C,Psychiatrist,Medical Appointment,Yes,2023-04-11,60,3
+C,Nurse,Video,Yes,2023-04-15,55,4
+C,Psychiatrist,Medical Appointment,Yes,2023-05-06,45,6
+A,Therapist,Medical Appointment,Yes,2023-06-02,35,7
+A,Psychiatrist,Phone Call,No,2023-06-06,40,6
+A,Psychiatrist,Medical Appointment,Yes,2023-07-02,65,3
+A,Nurse,Hospital Intervention,Yes,2023-07-06,60,4
+A,Therapist,Video,Yes,2023-08-11,45,6
+B,Psychiatrist,Medical Appointment,Yes,2023-06-04,35,7
+B,Therapist,Phone Call,Yes,2023-06-08,40,6
+B,Psychiatrist,Medical Appointment,Yes,2023-07-11,60,3
+B,Nurse,Video,Yes,2023-07-15,55,4
+B,Psychiatrist,Medical Appointment,Yes,2023-08-16,45,6
+C,Therapist,Medical Appointment,Yes,2023-06-06,35,7
+C,Psychiatrist,Phone Call,Yes,2023-06-10,40,6
+C,Psychiatrist,Medical Appointment,Yes,2023-07-16,60,3
+C,Nurse,Hospital Intervention,Yes,2023-07-20,55,4
+C,Therapist,Video,Yes,2023-08-11,45,6
+A,Psychiatrist,Medical Appointment,Yes,2023-08-16,35,7
+A,Therapist,Phone Call,Yes,2023-08-20,40,6
+A,Psychiatrist,Medical Appointment,Yes,2023-09-02,65,3
+A,Nurse,Video,Yes,2023-09-06,60,4
+A,Psychiatrist,Medical Appointment,Yes,2023-10-11,45,6
+B,Therapist,Medical Appointment,Yes,2023-08-20,35,7
+B,Psychiatrist,Phone Call,No,2023-08-24,40,6
+B,Psychiatrist,Medical Appointment,Yes,2023-09-06,60,3
+B,Nurse,Hospital Intervention,Yes,2023-09-10,55,4
+B,Therapist,Video,Yes,2023-10-02,45,6
+C,Psychiatrist,Medical Appointment,Yes,2023-08-15,35,7
+C,Therapist,Phone Call,Yes,2023-08-19,40,6
+C,Psychiatrist,Medical Appointment,Yes,2023-09-11,60,3
+C,Nurse,Video,Yes,2023-09-15,55,4
+C,Psychiatrist,Medical Appointment,Yes,2023-10-06,45,6
+A,Therapist,Medical Appointment,Yes,2023-11-02,35,7
+A,Psychiatrist,Phone Call,Yes,2023-11-06,40,6
+A,Psychiatrist,Medical Appointment,Yes,2023-12-02,65,3
+A,Nurse,Hospital Intervention,Yes,2023-12-06,60,4
+A,Therapist,Video,Yes,2024-01-11,45,6
+B,Psychiatrist,Medical Appointment,Yes,2023-11-04,35,7
+B,Therapist,Phone Call,Yes,2023-11-08,40,6
+B,Psychiatrist,Medical Appointment,Yes,2023-12-06,60,3
+B,Nurse,Video,Yes,2023-12-10,55,4
+B,Psychiatrist,Medical Appointment,Yes,2024-01-11,45,6
+C,Therapist,Medical Appointment,Yes,2023-11-06,35,7
+C,Psychiatrist,Phone Call,Yes,2023-11-10,40,6
+C,Psychiatrist,Medical Appointment,Yes,2023-12-11,60,3
+C,Nurse,Hospital Intervention,Yes,2023-12-15,55,4
+C,Therapist,Video,Yes,2024-01-16,45,6
+A,Psychiatrist,Medical Appointment,Yes,2024-01-06,35,7
+A,Therapist,Phone Call,No,2024-01-10,40,6
+A,Psychiatrist,Medical Appointment,Yes,2024-02-02,65,3
+A,Nurse,Video,Yes,2024-02-06,60,4
+A,Psychiatrist,Medical Appointment,Yes,2024-03-11,45,6
+B,Therapist,Medical Appointment,Yes,2024-01-12,35,7
+B,Psychiatrist,Phone Call,Yes,2024-01-16,40,6
+B,Psychiatrist,Medical Appointment,Yes,2024-02-06,60,3
+B,Nurse,Hospital Intervention,Yes,2024-02-10,55,4
+B,Therapist,Video,Yes,2024-03-02,45,6
+C,Psychiatrist,Medical Appointment,Yes,2024-01-17,35,7
+C,Therapist,Phone Call,Yes,2024-01-21,40,6
+C,Psychiatrist,Medical Appointment,Yes,2024-02-11,60,3
+C,Nurse,Video,Yes,2024-02-15,55,4
+C,Psychiatrist,Medical Appointment,Yes,2024-03-06,45,6
+A,Therapist,Medical Appointment,Yes,2024-04-02,35,7
+A,Psychiatrist,Phone Call,Yes,2024-04-06,40,6
+A,Psychiatrist,Medical Appointment,Yes,2024-05-02,65,3
+A,Nurse,Hospital Intervention,Yes,2024-05-06,60,4
+A,Therapist,Video,Yes,2024-06-11,45,6
+B,Psychiatrist,Medical Appointment,Yes,2024-04-04,35,7
+B,Therapist,Phone Call,Yes,2024-04-08,40,6
+B,Psychiatrist,Medical Appointment,Yes,2024-05-06,60,3
+B,Nurse,Video,Yes,2024-05-10,55,4
+B,Psychiatrist,Medical Appointment,Yes,2024-06-11,45,6
+C,Therapist,Medical Appointment,Yes,2024-04-06,35,7
+C,Psychiatrist,Phone Call,Yes,2024-04-10,40,6
+C,Psychiatrist,Medical Appointment,Yes,2024-05-11,60,3
+C,Nurse,Hospital Intervention,Yes,2024-05-15,55,4
+C,Therapist,Video,Yes,2024-06-16,45,6
+A,Psychiatrist,Medical Appointment,Yes,2024-06-21,35,7
+A,Therapist,Phone Call,No,2024-06-25,40,6
+A,Psychiatrist,Medical Appointment,Yes,2024-07-07,65,3
+A,Nurse,Video,Yes,2024-07-11,60,4
+A,Psychiatrist,Medical Appointment,Yes,2024-08-16,45,6
+B,Therapist,Medical Appointment,Yes,2024-06-25,35,7
+B,Psychiatrist,Phone Call,Yes,2024-06-29,40,6
+B,Psychiatrist,Medical Appointment,Yes,2024-07-11,60,3
+B,Nurse,Hospital Intervention,Yes,2024-07-15,55,4
+B,Therapist,Video,Yes,2024-08-16,45,6
+C,Psychiatrist,Medical Appointment,Yes,2024-06-30,35,7
+C,Therapist,Phone Call,Yes,2024-07-04,40,6
+C,Psychiatrist,Medical Appointment,Yes,2024-07-16,60,3
+C,Nurse,Video,Yes,2024-07-20,55,4
+C,Psychiatrist,Medical Appointment,Yes,2024-08-11,45,6
+A,Therapist,Medical Appointment,Yes,2024-08-21,35,7
+A,Psychiatrist,Phone Call,Yes,2024-08-25,40,6
+A,Psychiatrist,Medical Appointment,Yes,2024-09-02,65,3
+A,Nurse,Hospital Intervention,Yes,2024-09-06,60,4
+A,Therapist,Video,Yes,2024-10-11,45,6
+B,Psychiatrist,Medical Appointment,Yes,2024-08-25,35,7
+B,Therapist,Phone Call,Yes,2024-08-29,40,6
+B,Psychiatrist,Medical Appointment,Yes,2024-09-06,60,3
+B,Nurse,Video,Yes,2024-09-10,55,4
+B,Psychiatrist,Medical Appointment,Yes,2024-10-11,45,6
+C,Therapist,Medical Appointment,Yes,2024-08-30,35,7
+C,Psychiatrist,Phone Call,Yes,2024-09-03,40,6
+C,Psychiatrist,Medical Appointment,Yes,2024-09-11,60,3
+C,Nurse,Hospital Intervention,Yes,2024-09-15,55,4
+C,Therapist,Video,Yes,2024-10-06,45,6
+A,Psychiatrist,Medical Appointment,Yes,2024-10-16,35,7
+A,Therapist,Phone Call,No,2024-10-20,40,6
+A,Psychiatrist,Medical Appointment,Yes,2024-11-06,65,3
+A,Nurse,Video,Yes,2024-11-10,60,4
+A,Psychiatrist,Medical Appointment,Yes,2024-12-15,45,6
+B,Therapist,Medical Appointment,Yes,2024-10-18,35,7
+B,Psychiatrist,Phone Call,Yes,2024-10-22,40,6
+B,Psychiatrist,Medical Appointment,Yes,2024-11-11,60,3
+B,Nurse,Hospital Intervention,Yes,2024-11-15,55,4
+B,Therapist,Video,Yes,2024-12-16,45,6
+C,Psychiatrist,Medical Appointment,Yes,2024-10-20,35,7
+C,Therapist,Phone Call,Yes,2024-10-24,40,6
+C,Psychiatrist,Medical Appointment,Yes,2024-11-16,60,3
+C,Nurse,Video,Yes,2024-11-20,55,4
+C,Psychiatrist,Medical Appointment,Yes,2024-12-11,45,6
+A,Therapist,Medical Appointment,Yes,2024-12-20,35,7
+A,Psychiatrist,Phone Call,Yes,2024-12-24,40,6
+A,Psychiatrist,Medical Appointment,Yes,2025-01-11,65,3
+A,Nurse,Hospital Intervention,Yes,2025-01-15,60,4
+A,Therapist,Video,Yes,2025-02-20,45,6
+B,Psychiatrist,Medical Appointment,Yes,2024-12-22,35,7
+B,Therapist,Phone Call,Yes,2024-12-26,40,6
+B,Psychiatrist,Medical Appointment,Yes,2025-01-12,60,3
+B,Nurse,Video,Yes,2025-01-16,55,4
+B,Psychiatrist,Medical Appointment,Yes,2025-02-21,45,6
+C,Therapist,Medical Appointment,Yes,2024-12-24,35,7
+C,Psychiatrist,Phone Call,Yes,2024-12-28,40,6
+C,Psychiatrist,Medical Appointment,Yes,2025-01-13,60,3
+C,Nurse,Hospital Intervention,Yes,2025-01-17,55,4
+C,Therapist,Video,Yes,2025-02-08,45,6
+A,Psychiatrist,Medical Appointment,Yes,2025-02-25,35,7
+A,Therapist,Phone Call,No,2025-03-01,40,6
+A,Psychiatrist,Medical Appointment,Yes,2025-03-12,65,3
+A,Nurse,Video,Yes,2025-03-16,60,4
+A,Psychiatrist,Medical Appointment,Yes,2025-04-21,45,6
+B,Therapist,Medical Appointment,Yes,2025-02-27,35,7
+B,Psychiatrist,Phone Call,Yes,2025-03-03,40,6
+B,Psychiatrist,Medical Appointment,Yes,2025-03-14,60,3
+B,Nurse,Hospital Intervention,Yes,2025-03-18,55,4
+B,Therapist,Video,Yes,2025-04-23,45,6
+C,Psychiatrist,Medical Appointment,Yes,2025-03-01,35,7
+C,Therapist,Phone Call,Yes,2025-03-05,40,6
+C,Psychiatrist,Medical Appointment,Yes,2025-03-16,60,3
+C,Nurse,Video,Yes,2025-03-20,55,4
+C,Psychiatrist,Medical Appointment,Yes,2025-04-11,45,6
+A,Therapist,Medical Appointment,Yes,2025-04-26,35,7
+A,Psychiatrist,Phone Call,Yes,2025-04-30,40,6
+A,Psychiatrist,Medical Appointment,Yes,2025-05-11,65,3
+A,Nurse,Hospital Intervention,Yes,2025-05-15,60,4
+A,Therapist,Video,Yes,2025-06-20,45,6
+B,Psychiatrist,Medical Appointment,Yes,2025-04-28,35,7
+B,Therapist,Phone Call,Yes,2025-05-02,40,6
+B,Psychiatrist,Medical Appointment,Yes,2025-05-13,60,3
+B,Nurse,Video,Yes,2025-05-17,55,4
+B,Psychiatrist,Medical Appointment,Yes,2025-06-22,45,6
+C,Therapist,Medical Appointment,Yes,2025-05-03,35,7
+C,Psychiatrist,Phone Call,Yes,2025-05-07,40,6
+C,Psychiatrist,Medical Appointment,Yes,2025-05-18,60,3
+C,Nurse,Hospital Intervention,Yes,2025-05-22,55,4
+C,Therapist,Video,Yes,2025-06-13,45,6
+A,Psychiatrist,Medical Appointment,Yes,2025-06-25,35,7
+A,Therapist,Phone Call,No,2025-06-29,40,6
+A,Psychiatrist,Medical Appointment,Yes,2025-07-10,65,3
+A,Nurse,Video,Yes,2025-07-14,60,4
+A,Psychiatrist,Medical Appointment,Yes,2025-08-19,45,6
+B,Therapist,Medical Appointment,Yes,2025-06-27,35,7
+B,Psychiatrist,Phone Call,Yes,2025-07-01,40,6
+B,Psychiatrist,Medical Appointment,Yes,2025-07-12,60,3
+B,Nurse,Hospital Intervention,Yes,2025-07-16,55,4
+B,Therapist,Video,Yes,2025-08-21,45,6
+C,Psychiatrist,Medical Appointment,Yes,2025-07-02,35,7
+C,Therapist,Phone Call,Yes,2025-07-06,40,6
+C,Psychiatrist,Medical Appointment,Yes,2025-07-17,60,3
+C,Nurse,Video,Yes,2025-07-21,55,4
+C,Psychiatrist,Medical Appointment,Yes,2025-08-12,45,6
+A,Therapist,Medical Appointment,Yes,2025-08-24,35,7
+A,Psychiatrist,Phone Call,Yes,2025-08-28,40,6
+A,Psychiatrist,Medical Appointment,Yes,2025-09-02,65,3
+A,Nurse,Hospital Intervention,Yes,2025-09-06,60,4
+B,Psychiatrist,Medical Appointment,Yes,2025-08-26,35,7
+B,Therapist,Phone Call,Yes,2025-08-30,40,6
+B,Psychiatrist,Medical Appointment,Yes,2025-09-04,60,3
+C,Therapist,Medical Appointment,Yes,2025-08-31,35,7
+C,Psychiatrist,Phone Call,Yes,2025-09-04,40,6
